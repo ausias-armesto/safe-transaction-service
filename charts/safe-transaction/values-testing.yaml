@@ -1,0 +1,19 @@
+---
+image:
+  tag: latest
+config:
+  secretKey: "secretValue"
+  postgres:
+    secretReferenceKey: safe.safe-transaction-postgres-cluster-credentials
+    database: "safe_transaction"
+    host: "postgres-cluster.postgres.svc.cluster.stage"
+  redis:
+    secretReferenceKey: safe-transaction-redis-credentials
+    database: "1"
+    host: "redis-ha.redis.svc.cluster.stage"
+  rabbitmq:
+    secretReferenceKey: rabbitmq-credentials-safe
+    virtualHost: "safe"
+    host: "rabbitmq-ha-cluster.rabbitmq.svc.cluster.stage"
+persistence:
+  storageClassName: ceph-ephimeral
