@@ -105,19 +105,30 @@ persistence:
 config:
   ## @param config.secretKey Transaction Service Secret Key. You should generate a random string of 50+ characters for this value in prod.
   secretKey: ""
+
   ## @param config.refSecretKey Reference to an existing secret containing the following entries: DJANGO_SECRET_KEY
   refSecretKey: ""
+
   ## @param config.debug Enable debug
   debug: true
+
   ## @param config.ethL2Network Log Level
   ethL2Network: 1
+
   ## @param config.ethereumRpcUrl
   ethereumRpcUrl: https://primary.gnosis-chain.rpc.hoprtech.net
+
+
+  ## @param config.extraEnvVars Add additional extra environment vairables to the configMap
+  ##
+  extraEnvVars: {}
+
   django:
     ## @param config.django.allowedHosts Allowed hosts
     allowedHosts: "*"
   postgres:
-    ## @param config.postgres.secretReferenceKey Reference to an existing secret containing the following entries: username, password
+    ## @param config.postgres.secretReferenceKey Reference to an existing secret containing the following entry: DATABASE_URL
+    # Format: psql://postgres:postgres@txs-db:5432/postgres
     secretReferenceKey: ""
     ## @param config.postgres.username PostgreSQL user
     username: ""
@@ -130,7 +141,8 @@ config:
     ## @param config.postgres.port PostgreSQL server port
     port: "5432"
   redis:
-    ## @param config.redis.secretReferenceKey Reference to an existing secret containing the following entries: password
+    ## @param config.redis.secretReferenceKey Reference to an existing secret containing the following entries: password, REDIS_URL
+    # Format redis://<pass>@safe-transaction-redis.safe.svc.cluster.stage:6379
     secretReferenceKey: ""
     ## @param config.redis.password Redis user's password
     password: ""
@@ -140,8 +152,11 @@ config:
     host: ""
     ## @param config.redis.port Redis server port
     port: "6379"
+    ## @param config.redis.storageClassName StorageClassName
+    storageClassName: ""
   rabbitmq:
-    ## @param config.rabbitmq.secretReferenceKey Reference to an existing secret containing the following entries: username, password
+    ## @param config.rabbitmq.secretReferenceKey Reference to an existing secret containing the following entry: CELERY_BROKER_URL
+    # Format amqp://<user>:<password>@rabbitmq-ha-cluster/safe
     secretReferenceKey: ""
     ## @param config.rabbitmq.username RabbitMQ user
     username: ""

@@ -40,3 +40,36 @@ app.kubernetes.io/name: {{ .Release.Name }}
 app.kubernetes.io/instance: {{ include "safe-transaction.name" . }}
 
 {{- end }}
+
+{{/*
+Postgres Secret
+*/}}
+{{- define "safe-transaction.postgres-secret" -}}
+{{- if .Values.config.postgres.secretReferenceKey }}
+{{- .Values.config.postgres.secretReferenceKey }}
+{{- else }}
+{{ include "safe-transaction.name" . }}-postgres
+{{- end }}
+{{- end }}
+
+{{/*
+Redis Secret
+*/}}
+{{- define "safe-transaction.redis-secret" -}}
+{{- if .Values.config.redis.secretReferenceKey }}
+{{- .Values.config.redis.secretReferenceKey }}
+{{- else }}
+{{ include "safe-transaction.name" . }}-redis
+{{- end }}
+{{- end }}
+
+{{/*
+RabbitMQ Secret
+*/}}
+{{- define "safe-transaction.rabbitmq-secret" -}}
+{{- if .Values.config.rabbitmq.secretReferenceKey }}
+{{- .Values.config.rabbitmq.secretReferenceKey }}
+{{- else }}
+{{ include "safe-transaction.name" . }}-rabbitmq
+{{- end }}
+{{- end }}

@@ -64,7 +64,11 @@ spec:
               name: {{ include "safe-transaction.fullname" . }}
               {{- end }}
           - secretRef:
-              name: {{ include "safe-transaction.fullname" . }}-integrations
+              name: {{ include "safe-transaction.postgres-secret" . }}
+          - secretRef:
+              name: {{ include "safe-transaction.redis-secret" . }}
+          - secretRef:
+              name: {{ include "safe-transaction.rabbitmq-secret" . }}
         ports:
         - containerPort: {{ .Values.service.ports.number }}
           name: {{ .Values.service.ports.name }}

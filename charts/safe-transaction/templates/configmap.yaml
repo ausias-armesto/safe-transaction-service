@@ -22,3 +22,6 @@ data:
   ETHEREUM_NODE_URL: "{{- .Values.config.ethereumRpcUrl }}"
   DJANGO_ALLOWED_HOSTS: "{{- .Values.config.django.allowedHosts }}"
   FORCE_SCRIPT_NAME: "/txs/"
+  {{- if .Values.config.extraEnvVars }}
+  {{ .Values.config.extraEnvVars | toYaml | nindent 2 }}
+  {{- end }}
