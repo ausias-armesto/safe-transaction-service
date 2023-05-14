@@ -45,31 +45,31 @@ app.kubernetes.io/instance: {{ include "safe-transaction.name" . }}
 Postgres Secret
 */}}
 {{- define "safe-transaction.postgres-secret" -}}
-{{- if .Values.config.postgres.secretReferenceKey }}
+{{- if .Values.config.postgres.secretReferenceKey -}}
 {{- .Values.config.postgres.secretReferenceKey }}
-{{- else }}
+{{- else -}}
 {{ include "safe-transaction.name" . }}-postgres
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
 
 {{/*
 Redis Secret
 */}}
 {{- define "safe-transaction.redis-secret" -}}
-{{- if .Values.config.redis.secretReferenceKey }}
+{{- if .Values.config.redis.secretReferenceKey -}}
 {{- .Values.config.redis.secretReferenceKey }}
-{{- else }}
+{{- else -}}
 {{ include "safe-transaction.name" . }}-redis
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
 
 {{/*
 RabbitMQ Secret
 */}}
 {{- define "safe-transaction.rabbitmq-secret" -}}
-{{- if .Values.config.rabbitmq.secretReferenceKey }}
-{{- .Values.config.rabbitmq.secretReferenceKey }}
-{{- else }}
+{{- if .Values.config.rabbitmq.secretReferenceKey -}}
+{{- .Values.config.rabbitmq.secretReferenceKey -}}
+{{- else -}}
 {{ include "safe-transaction.name" . }}-rabbitmq
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
