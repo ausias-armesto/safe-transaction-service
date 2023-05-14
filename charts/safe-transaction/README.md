@@ -39,7 +39,7 @@ This chart packages the Safe transaction service resources. The chart assumes th
 | Name                                 | Description                                                                                                   | Value                                           |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | `config.secretKey`                   | Transaction Service Secret Key. You should generate a random string of 50+ characters for this value in prod. | `""`                                            |
-| `config.refSecretKey`                | Reference to an existing secret containing the following entries: DJANGO_SECRET_KEY                           | `""`                                            |
+| `config.secretReferenceKey`          | Reference to an existing secret containing the following entries: DJANGO_SECRET_KEY                           | `""`                                            |
 | `config.debug`                       | Enable debug                                                                                                  | `true`                                          |
 | `config.ethL2Network`                | Log Level                                                                                                     | `1`                                             |
 | `config.ethereumRpcUrl`              |                                                                                                               | `https://primary.gnosis-chain.rpc.hoprtech.net` |
