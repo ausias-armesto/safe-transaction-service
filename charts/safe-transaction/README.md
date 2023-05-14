@@ -52,6 +52,7 @@ This chart packages the Safe transaction service resources. The chart assumes th
 | `config.postgres.host`               | PostgreSQL server host                                                                                        | `""`                                            |
 | `config.postgres.port`               | PostgreSQL server port                                                                                        | `5432`                                          |
 | `config.redis.secretReferenceKey`    | Reference to an existing secret containing the following entries: password, REDIS_URL                         | `""`                                            |
+| `config.redis.username`              | Redis username                                                                                                | `default`                                       |
 | `config.redis.password`              | Redis user's password                                                                                         | `""`                                            |
 | `config.redis.database`              | Redis database number                                                                                         | `0`                                             |
 | `config.redis.host`                  | Redis server host                                                                                             | `""`                                            |
