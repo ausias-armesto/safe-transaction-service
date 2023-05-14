@@ -58,8 +58,8 @@ spec:
           - configMapRef:
               name: {{ include "safe-transaction.fullname" . }}
           - secretRef:
-              {{- if .Values.config.refSecretKey }}
-              name: {{ .Values.config.refSecretKey }}
+              {{- if .Values.config.secretReferenceKey }}
+              name: {{ .Values.config.secretReferenceKey }}
               {{- else }}
               name: {{ include "safe-transaction.fullname" . }}
               {{- end }}
