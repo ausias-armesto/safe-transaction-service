@@ -43,19 +43,21 @@ This chart packages the Safe transaction service resources. The chart assumes th
 | `config.debug`                       | Enable debug                                                                                                  | `true`                                          |
 | `config.ethL2Network`                | Log Level                                                                                                     | `1`                                             |
 | `config.ethereumRpcUrl`              |                                                                                                               | `https://primary.gnosis-chain.rpc.hoprtech.net` |
+| `config.extraEnvVars`                | Add additional extra environment vairables to the configMap                                                   | `{}`                                            |
 | `config.django.allowedHosts`         | Allowed hosts                                                                                                 | `*`                                             |
-| `config.postgres.secretReferenceKey` | Reference to an existing secret containing the following entries: username, password                          | `""`                                            |
+| `config.postgres.secretReferenceKey` | Reference to an existing secret containing the following entry: DATABASE_URL                                  | `""`                                            |
 | `config.postgres.username`           | PostgreSQL user                                                                                               | `""`                                            |
 | `config.postgres.password`           | PostgreSQL user's password                                                                                    | `""`                                            |
 | `config.postgres.database`           | PostgreSQL database name                                                                                      | `safe-transaction`                              |
 | `config.postgres.host`               | PostgreSQL server host                                                                                        | `""`                                            |
 | `config.postgres.port`               | PostgreSQL server port                                                                                        | `5432`                                          |
-| `config.redis.secretReferenceKey`    | Reference to an existing secret containing the following entries: password                                    | `""`                                            |
+| `config.redis.secretReferenceKey`    | Reference to an existing secret containing the following entries: password, REDIS_URL                         | `""`                                            |
 | `config.redis.password`              | Redis user's password                                                                                         | `""`                                            |
 | `config.redis.database`              | Redis database number                                                                                         | `0`                                             |
 | `config.redis.host`                  | Redis server host                                                                                             | `""`                                            |
 | `config.redis.port`                  | Redis server port                                                                                             | `6379`                                          |
-| `config.rabbitmq.secretReferenceKey` | Reference to an existing secret containing the following entries: username, password                          | `""`                                            |
+| `config.redis.storageClassName`      | StorageClassName                                                                                              | `""`                                            |
+| `config.rabbitmq.secretReferenceKey` | Reference to an existing secret containing the following entry: CELERY_BROKER_URL                             | `""`                                            |
 | `config.rabbitmq.username`           | RabbitMQ user                                                                                                 | `""`                                            |
 | `config.rabbitmq.password`           | RabbitMQ user's password                                                                                      | `""`                                            |
 | `config.rabbitmq.virtualHost`        | RabbitMQ virtual host name                                                                                    | `/`                                             |
