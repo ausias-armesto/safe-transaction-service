@@ -144,6 +144,8 @@ config:
     ## @param config.redis.secretReferenceKey Reference to an existing secret containing the following entries: password, REDIS_URL
     # Format redis://<pass>@safe-transaction-redis.safe.svc.cluster.stage:6379
     secretReferenceKey: ""
+    ## @param config.redis.username Redis username
+    username: default
     ## @param config.redis.password Redis user's password
     password: ""
     ## @param config.redis.database Redis database number
