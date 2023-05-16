@@ -19,7 +19,7 @@ replicas: 1
 
 ## @param strategy Strategy for deployment
 ##
-strategy: "Recreate"
+strategy: "RollingUpdate"
 
 ## @param commonLabels [object] Labels to add to all related objects
 ##
@@ -81,24 +81,29 @@ service:
   ports:
     ## @param service.ports.number service port number
     ##  
-    number: 8888
+    number: 80
     ## @param service.ports.name service port name
     ##
-    name: gunicorn
+    name: nginx
   ## @param service.sessionAffinity Control where client requests go, to the same pod or round-robin
   ## Values: ClientIP or None
   ## ref: https://kubernetes.io/docs/user-guide/services/
   ##
   sessionAffinity: None
 
-persistence:
-  ## @param persistence.storageClassName Storage class name for persisting static files
+ingress:
+  ## @param ingress.ingressClassName Name of the ingress class name to be used
   ##
-  storageClassName: ""
+  ingressClassName: ""
 
-  ## @param persistence.size Size of the persistence volume
+  ## @param ingress.hostname Default host for the ingress record
   ##
-  size: 100M
+  hostname: safe.cluster.local
+
+  ## @param ingress.annotations Annotations to be added to ingress resources
+  ## @skipingress.annotations
+  ##
+  annotations: {}
 
 ## @section Configuration Parameters
 ##
@@ -141,7 +146,7 @@ config:
     ## @param config.postgres.port PostgreSQL server port
     port: "5432"
   redis:
-    ## @param config.redis.secretReferenceKey Reference to an existing secret containing the following entries: password, REDIS_URL
+    ## @param config.redis.secretReferenceKey Reference to an existing secret containing the following entries: REDIS_URL
     # Format redis://<pass>@safe-transaction-redis.safe.svc.cluster.stage:6379
     secretReferenceKey: ""
     ## @param config.redis.username Redis username
